@@ -1,14 +1,24 @@
 package com.taureanx.phoneservicelogs.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.taureanx.phoneservicelogs.util.PhoneBrand
 import java.util.*
 
+@Entity(tableName = "service_data")
 data class ServiceData(
-    val id: Long,
+    @PrimaryKey(autoGenerate = true)
+    var id: Long? = null,
+
+    @ColumnInfo(name = "customer_name")
     var cusName: String = "",
-    var bigShopName: String = "",
     var collectedDate: Date = Date(), // လာအပ်တဲ့နေ့စွဲ
-    var phBrand: PhoneBrand,
+
+    @ColumnInfo(name = "phone_brand")
+    var phBrand: PhoneBrand = PhoneBrand.XIAOMI,
+
+    @ColumnInfo(name = "phone_model")
     var phModel: String = "",
     var case: String = "", //ပြုပြင်ရမည့် အကြာင်းရင်း
     var urgent: Boolean = false, //အရေးကြီး/မကြီး
