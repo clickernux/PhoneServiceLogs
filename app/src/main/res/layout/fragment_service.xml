@@ -7,26 +7,157 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".topfragments.ServiceFragment">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".topfragments.ServiceFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/serviceRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:layout_margin="4dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:itemCount="10"
-            tools:listitem="@layout/service_item_layout"/>
+            <TextView
+                android:id="@+id/no_data_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_data"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+                <HorizontalScrollView
+                    android:id="@+id/horiScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:layout_margin="4dp">
+
+                    <TableLayout
+                        android:id="@+id/service_table"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/teal_700">
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:ignore="UselessParent">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/customer_name"
+                                android:textColor="@color/color_on_primary"
+                                android:background="@color/white"
+                                android:padding="10dp"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ph_brand"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ph_model"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/collected_date"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/repair_case"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/repair_done_or_not"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/is_taken"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/taken_date"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/contactNumber"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cost"
+                                android:textColor="@color/color_on_primary"
+                                android:padding="10dp"
+                                android:background="@color/white"
+                                android:layout_margin="0.5dp"
+                                android:textStyle="bold"/>
+                        </TableRow>
+                    </TableLayout>
+                </HorizontalScrollView>
+            </androidx.core.widget.NestedScrollView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabAddService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:src="@drawable/ic_add"
+                android:contentDescription="@string/add_service"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

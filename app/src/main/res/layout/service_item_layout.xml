@@ -12,14 +12,14 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/secondary_color"
         app:cardElevation="4dp"
         app:cardCornerRadius="8dp"
         android:layout_margin="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/cusName"
@@ -28,53 +28,70 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:text="@{serviceData.cusName}"
+                android:padding="16dp"
+                android:background="@color/primary_color"
+                android:textColor="@color/color_on_primary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="ထွန်းထွန်းနိုင်" />
 
-            <TextView
-                android:id="@+id/brandText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@{serviceData.phBrand.toString()}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cusName"
-                tools:text="OPPO" />
-
-            <TextView
-                android:id="@+id/modelText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:text="@{serviceData.phModel}"
-                app:layout_constraintStart_toEndOf="@id/brandText"
-                app:layout_constraintTop_toBottomOf="@id/cusName"
-                tools:text="A3S" />
-
-            <TextView
-                android:id="@+id/repairCaseText"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@{serviceData.case}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/brandText"
-                tools:text="Replace LCD" />
+                app:layout_constraintTop_toBottomOf="@id/cusName"
+                android:padding="16dp">
 
-            <TextView
-                android:id="@+id/dateText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="11sp"
-                android:textStyle="italic"
-                app:setFormattedDate="@{serviceData.collectedDate}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/repairCaseText"
-                tools:text="12.2.2022" />
+                <TextView
+                    android:id="@+id/brandText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_on_primary"
+                    android:text="@{serviceData.phBrand.toString()}"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="OPPO" />
+
+                <TextView
+                    android:id="@+id/modelText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{serviceData.phModel}"
+                    android:textColor="@color/color_on_primary"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/brandText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="A3S" />
+
+                <TextView
+                    android:id="@+id/repairCaseText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{serviceData.case}"
+                    android:textColor="@color/color_on_primary"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/modelText"
+                    tools:text="Replace LCD" />
+
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="11sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/color_on_primary"
+                    app:setFormattedDate="@{serviceData.collectedDate}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/repairCaseText"
+                    tools:text="12.2.2022" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

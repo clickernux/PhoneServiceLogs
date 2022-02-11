@@ -14,7 +14,9 @@ data class ServiceData(
     var urgent: Boolean = false, //အရေးကြီး/မကြီး
     var repaired: Boolean = false, //ပြုပြင်ပြီး/မပြီး
     var isTaken: Boolean = false, //ရွေးယူပြီး/မပြီး
-    var takenDate: Date? = null //ရွေးယူခဲ့ရင် ရွေးယူသွားတဲ့နေ့စွဲ
+    var takenDate: Date? = null, //ရွေးယူခဲ့ရင် ရွေးယူသွားတဲ့နေ့စွဲ
+    var contactPhone: String? = null,
+    var cost: Long? = null
 )
 
 object DummyData{
@@ -24,7 +26,8 @@ object DummyData{
             cusName = "ထွန်းထွန်းနိုင်",
             phBrand = PhoneBrand.OPPO,
             phModel = "A31",
-            case = "မှန်လဲရန်"
+            case = "မှန်လဲရန်",
+            contactPhone = "09256343863"
         ),
 
         ServiceData(

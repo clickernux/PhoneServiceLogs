@@ -5,4 +5,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_service">Add Service</string>
+    <string name="customer_name">အမည်</string>
+    <string name="ph_brand">အမျိုးစား</string>
+    <string name="ph_model">မော်ဒယ်</string>
+    <string name="collected_date">အပ်သည့်နေ့စွဲ</string>
+    <string name="repair_case">ပြုပြင်ရန်</string>
+    <string name="repair_done_or_not">ပြုပြင်ပြီး</string>
+    <string name="is_taken">ရွေးပြီး</string>
+    <string name="taken_date">ရွေးသည့်နေ့စွဲ</string>
+    <string name="cost">ကျသင့်ငွေ</string>
+    <string name="contactNumber">ဆက်သွယ်ရန်</string>
+    <string name="no_data">No Data</string>
 </resources>
