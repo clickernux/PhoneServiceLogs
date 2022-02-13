@@ -4,18 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
 import com.taureanx.phoneservicelogs.MainViewModel
+import com.taureanx.phoneservicelogs.ServiceActivity
 import com.taureanx.phoneservicelogs.databinding.FragmentServiceBinding
-import com.taureanx.phoneservicelogs.databinding.ServiceTableRowBinding
-import com.taureanx.phoneservicelogs.model.DummyData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+
+const val NEW_SERVICE = -1
 
 class ServiceFragment : Fragment() {
     private var _binding: FragmentServiceBinding? = null
@@ -33,22 +30,16 @@ class ServiceFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-//        DummyData.data.map { data ->
-//            scope.launch {
-//
-//                withContext(Dispatchers.Main){
-//                    val myLayoutInflater = LayoutInflater.from(requireContext())
-//                    val tableRow = ServiceTableRowBinding.inflate(myLayoutInflater, binding.serviceTable, false)
-//                    tableRow.serviceData = data
-//                    binding.serviceTable.addView(tableRow.customTableRow)
-//                    tableRow.customTableRow.setOnLongClickListener {
-//                        Toast.makeText(requireContext(), data.cusName, Toast.LENGTH_SHORT).show()
-//                        true
-//                    }
-//                }
-//            }
-//        }
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.fabAddService.setOnClickListener {
+            val intent = ServiceActivity.newIntent(this.requireContext(), NEW_SERVICE)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

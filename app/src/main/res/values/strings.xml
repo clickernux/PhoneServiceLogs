@@ -16,4 +16,9 @@
     <string name="cost">ကျသင့်ငွေ</string>
     <string name="contactNumber">ဆက်သွယ်ရန်</string>
     <string name="no_data">No Data</string>
+    <string name="edit_service">Edit Service</string>
+    <string name="is_urgent">အရေးကြီး</string>
+    <string name="collected_date_label">အပ်သည့်ရက်စွဲ -</string>
+    <string name="taken_date_label">ရွေးသည့်ရက်စွဲ -</string>
+    <string name="menu_save">Save</string>
 </resources>

@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/activity_main.xml" value="0.27521367521367524" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/activity_service.xml" value="0.16770833333333332" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/fragment_add_service.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/activity_service.xml" value="0.21" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/fragment_add_service.xml" value="0.33" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/fragment_edit_service.xml" value="0.13766566908935443" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/fragment_home.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/fragment_service.xml" value="0.27600554785020803" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/phone_brand_list_item.xml" value="0.5" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/service_item_layout.xml" value="0.33" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/layout/service_table_row.xml" value="0.33" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/menu/add_service_fragment_option_menu.xml" value="0.13766566908935443" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/PhoneServiceLogs/app/src/main/res/menu/bottom_nav.xml" value="0.16770833333333332" />
       </map>
     </option>

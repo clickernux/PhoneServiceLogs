@@ -6,7 +6,7 @@
     app:startDestination="@id/top_nav">
 
     <navigation android:id="@+id/top_nav"
-        app:startDestination="@id/home">
+        app:startDestination="@id/serviceFragment">
         <fragment
             android:id="@+id/home"
             android:name="com.taureanx.phoneservicelogs.topfragments.Home"
