@@ -1,16 +1,13 @@
 package com.taureanx.phoneservicelogs.util
 
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.TableLayout
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.BindingAdapter
-import com.taureanx.phoneservicelogs.databinding.ServiceTableRowBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.taureanx.phoneservicelogs.R
+import com.taureanx.phoneservicelogs.adapter.ServiceRecyclerAdapter
 import com.taureanx.phoneservicelogs.model.ServiceData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.util.*
 
 @BindingAdapter("setFormattedDate")
@@ -34,25 +31,24 @@ fun showOrHideNoData(textView: TextView, data: List<ServiceData>?){
     }
 }
 
-@BindingAdapter("setTableLayoutManager")
-fun tableLayoutManager(tableLayout: TableLayout, serviceList: List<ServiceData>?){
-    val myScope = CoroutineScope(Dispatchers.Main)
-    val context = tableLayout.context
-    if(serviceList.isNullOrEmpty()){
-        tableLayout.visibility = View.GONE
-    }else{
 
-        serviceList.map { data ->
-            myScope.launch {
-                val myLayoutInflater = LayoutInflater.from(context)
-                val tableRow = ServiceTableRowBinding.inflate(myLayoutInflater, tableLayout, false)
-                tableRow.serviceData = data
-                tableLayout.addView(tableRow.customTableRow)
-                tableRow.customTableRow.setOnLongClickListener {
-                    Toast.makeText(context, data.cusName, Toast.LENGTH_SHORT).show()
-                    true
-                }
-            }
-        }
+@BindingAdapter("setDataToRecyclerView")
+fun setUpRecyclerView(recyclerView: RecyclerView, data: List<ServiceData>?){
+    val adapter = recyclerView.adapter as ServiceRecyclerAdapter
+    data?.let {
+        adapter.submitList(it)
+    }
+}
+
+@BindingAdapter("setServiceStatus")
+fun showStatusOfServiceDevice(imageView: ImageView, data: ServiceData){
+    if(data.repaired && data.isTaken){
+        imageView.visibility = View.VISIBLE
+        imageView.setImageResource(R.drawable.ic_done_all)
+    }else if (data.repaired){
+        imageView.visibility = View.VISIBLE
+        imageView.setImageResource(R.drawable.ic_done)
+    }else{
+        imageView.visibility = View.GONE
     }
 }

@@ -19,6 +19,14 @@ class ServiceRepository private constructor(context: Context){
 
     fun getServices(): LiveData<List<ServiceData>> = crimeDao.getAll()
 
+    fun addNewService(newServiceData: ServiceData) = crimeDao.addNewService(newServiceData)
+
+    fun getService(id: Long): ServiceData? = crimeDao.getService(id)
+
+    fun deleteServiceData(serviceData: ServiceData) = crimeDao.deleteServiceData(serviceData)
+
+    fun updateServiceData(serviceData: ServiceData) = crimeDao.updateServiceData(serviceData)
+
     companion object{
         private var INSTANCE: ServiceRepository? = null
 

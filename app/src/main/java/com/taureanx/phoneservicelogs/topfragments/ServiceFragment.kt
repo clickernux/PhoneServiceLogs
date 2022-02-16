@@ -8,16 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.taureanx.phoneservicelogs.MainViewModel
 import com.taureanx.phoneservicelogs.ServiceActivity
+import com.taureanx.phoneservicelogs.adapter.OnServiceClickListener
+import com.taureanx.phoneservicelogs.adapter.ServiceRecyclerAdapter
 import com.taureanx.phoneservicelogs.databinding.FragmentServiceBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.taureanx.phoneservicelogs.model.ServiceData
 
-const val NEW_SERVICE = -1
+const val NEW_SERVICE = -1L
 
 class ServiceFragment : Fragment() {
     private var _binding: FragmentServiceBinding? = null
     private val binding get() = _binding!!
-    private lateinit var scope: CoroutineScope
     private val viewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -26,12 +26,18 @@ class ServiceFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentServiceBinding.inflate(inflater, container, false)
-        scope = CoroutineScope(Dispatchers.Default)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
-
+        val recyclerAdapter = ServiceRecyclerAdapter(OnServiceClickListener {
+            startEditService(it)
+        })
+        binding.serviceDataList.adapter = recyclerAdapter
         return binding.root
+    }
+
+    private fun startEditService(data: ServiceData) {
+        val serviceActivity = ServiceActivity.newIntent(this.requireContext(), data.id!!)
+        startActivity(serviceActivity)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

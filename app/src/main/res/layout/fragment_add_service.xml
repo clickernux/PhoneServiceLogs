@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/customer_name"
                 android:layout_marginVertical="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="clear_text"
                 app:startIconDrawable="@drawable/ic_person"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/ph_brand"
                 android:layout_marginVertical="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cusNameField"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -61,7 +62,7 @@
                 android:hint="@string/ph_model"
                 android:layout_marginVertical="10dp"
                 android:autofillHints="name"
-
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="clear_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/phone_brand_field"
@@ -79,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/repair_case"
                 android:layout_marginVertical="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="clear_text"
                 app:startIconDrawable="@drawable/ic_note_alt"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/contactNumber"
                 android:layout_marginVertical="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="clear_text"
                 app:startIconDrawable="@drawable/ic_phone_callback"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/cost"
                 android:layout_marginVertical="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="clear_text"
                 app:startIconDrawable="@drawable/ic_money"
                 app:layout_constraintStart_toStartOf="parent"
@@ -141,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/repair_done_or_not"
                 android:layout_marginStart="10dp"
+                android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@id/is_urgent_checkbox"
                 app:layout_constraintTop_toBottomOf="@id/repair_cost_field"/>
 
@@ -150,6 +155,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/is_taken"
                 android:layout_marginStart="10dp"
+                android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@id/is_repaired_checkbox"
                 app:layout_constraintTop_toBottomOf="@id/repair_cost_field"/>
 
@@ -172,27 +178,24 @@
                 app:layout_constraintTop_toBottomOf="@id/is_urgent_checkbox"
                 tools:text="12.2.2022"/>
 
-            <TextView
-                android:id="@+id/taken_date_label"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/note_field"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/taken_date_label"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:visibility="gone"
+                android:hint="@string/note"
+                android:layout_marginVertical="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/collected_date_label"/>
+                app:layout_constraintTop_toBottomOf="@id/collected_date_label"
+                app:layout_constraintEnd_toEndOf="parent">
 
-            <TextView
-                android:id="@+id/taken_date_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:visibility="gone"
-                app:layout_constraintStart_toEndOf="@id/taken_date_label"
-                app:layout_constraintTop_toTopOf="@id/taken_date_label"
-                app:layout_constraintBottom_toBottomOf="@id/taken_date_label"
-                tools:text="-"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:inputType="textMultiLine"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

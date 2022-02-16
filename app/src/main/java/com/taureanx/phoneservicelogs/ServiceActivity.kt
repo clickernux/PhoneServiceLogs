@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import com.taureanx.phoneservicelogs.databinding.ActivityServiceBinding
 import com.taureanx.phoneservicelogs.subfragments.AddServiceFragment
+import com.taureanx.phoneservicelogs.subfragments.EditServiceFragment
 
 private const val GET_ITEM_INDEX = "ITEM_INDEX"
 
@@ -26,9 +27,9 @@ class ServiceActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fragmentTransaction = supportFragmentManager.beginTransaction()
 
-        var itemIndex = intent.getIntExtra(GET_ITEM_INDEX, -1)
+        val itemIndex = intent.getLongExtra(GET_ITEM_INDEX, -1)
 
-        if(itemIndex == -1){
+        if(itemIndex == -1L){
             supportActionBar?.title = getString(R.string.add_service)
         }else{
             supportActionBar?.title = getString(R.string.edit_service)
@@ -37,9 +38,9 @@ class ServiceActivity : AppCompatActivity() {
         manageFragments(itemIndex)
     }
 
-    private fun manageFragments(itemIndex: Int) {
+    private fun manageFragments(itemIndex: Long) {
         when (itemIndex){
-            -1 -> {
+            -1L -> {
                 addNewServiceFragment()
             }
             else -> {
@@ -48,8 +49,11 @@ class ServiceActivity : AppCompatActivity() {
         }
     }
 
-    private fun editServiceFragment(itemIndex: Int) {
-        TODO("Not yet implemented")
+    private fun editServiceFragment(itemIndex: Long) {
+        val editService = EditServiceFragment.newInstance(itemIndex)
+        fragmentTransaction.replace(R.id.service_fragment_container, editService)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
     }
 
     private fun addNewServiceFragment() {
@@ -65,7 +69,7 @@ class ServiceActivity : AppCompatActivity() {
     }
 
     companion object{
-        fun newIntent(packageContext: Context, itemIndex: Int): Intent{
+        fun newIntent(packageContext: Context, itemIndex: Long): Intent{
             return Intent(packageContext, ServiceActivity::class.java).apply {
                 putExtra(GET_ITEM_INDEX, itemIndex)
             }

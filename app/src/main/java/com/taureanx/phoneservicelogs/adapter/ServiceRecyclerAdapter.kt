@@ -8,12 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.taureanx.phoneservicelogs.databinding.ServiceItemLayoutBinding
 import com.taureanx.phoneservicelogs.model.ServiceData
 
-class ServiceRecyclerAdapter :
+class ServiceRecyclerAdapter (private val onServiceClickListener: OnServiceClickListener):
     ListAdapter<ServiceData, ServiceRecyclerAdapter.ServiceViewHolder>(ServiceDiff()) {
     class ServiceViewHolder(private val binding: ServiceItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ServiceData) {
+        fun bind(item: ServiceData, onServiceClickListener: OnServiceClickListener) {
             binding.serviceData = item
+            binding.serviceCardView.setOnClickListener {
+                onServiceClickListener.onClick(item)
+            }
             binding.executePendingBindings()
         }
     }
@@ -25,7 +28,7 @@ class ServiceRecyclerAdapter :
 
     override fun onBindViewHolder(holder: ServiceViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, onServiceClickListener)
     }
 }
 
@@ -38,3 +41,8 @@ class ServiceDiff : DiffUtil.ItemCallback<ServiceData>() {
         return oldItem == newItem
     }
 }
+
+class OnServiceClickListener(private val onItemClick: (serviceData: ServiceData) -> Unit){
+    fun onClick(serviceData: ServiceData) = onItemClick(serviceData)
+}
+

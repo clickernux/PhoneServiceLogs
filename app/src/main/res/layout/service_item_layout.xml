@@ -10,6 +10,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/serviceCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/secondary_color"
@@ -35,6 +36,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="ထွန်းထွန်းနိုင်" />
+
+            <ImageView
+                android:id="@+id/statusImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/status"
+                app:setServiceStatus="@{serviceData}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cusName"
+                app:layout_constraintBottom_toBottomOf="@id/cusName"
+                tools:src="@drawable/ic_done"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -62,6 +75,7 @@
                     android:text="@{serviceData.phModel}"
                     android:textColor="@color/color_on_primary"
                     android:textSize="12sp"
+                    android:textAllCaps="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/brandText"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +86,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@{serviceData.case}"
+                    android:text="@{serviceData.repair_case}"
                     android:textColor="@color/color_on_primary"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"

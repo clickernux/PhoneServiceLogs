@@ -26,131 +26,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <androidx.core.widget.NestedScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/serviceDataList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="none">
-                <HorizontalScrollView
-                    android:id="@+id/horiScroll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none"
-                    android:layout_margin="4dp">
-
-                    <TableLayout
-                        android:id="@+id/service_table"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/teal_700"
-                        app:setTableLayoutManager="@{viewModel.services}">
-
-                        <TableRow
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:ignore="UselessParent">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/customer_name"
-                                android:textColor="@color/color_on_primary"
-                                android:background="@color/white"
-                                android:padding="10dp"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ph_brand"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ph_model"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/collected_date"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/repair_case"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/repair_done_or_not"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/is_taken"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/taken_date"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/contactNumber"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/cost"
-                                android:textColor="@color/color_on_primary"
-                                android:padding="10dp"
-                                android:background="@color/white"
-                                android:layout_margin="0.5dp"
-                                android:textStyle="bold"/>
-                        </TableRow>
-                    </TableLayout>
-                </HorizontalScrollView>
-            </androidx.core.widget.NestedScrollView>
+                android:clipToPadding="false"
+                android:layout_margin="4dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                app:setDataToRecyclerView="@{viewModel.services}"
+                tools:itemCount="20"
+                tools:listitem="@layout/service_item_layout"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabAddService"

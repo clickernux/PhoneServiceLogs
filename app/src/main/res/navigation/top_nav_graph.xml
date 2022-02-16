@@ -17,5 +17,12 @@
             android:name="com.taureanx.phoneservicelogs.topfragments.ServiceFragment"
             android:label="fragment_service"
             tools:layout="@layout/fragment_service" />
+        <action
+            android:id="@+id/action_global_addServiceFragment"
+            app:destination="@id/addServiceFragment" />
     </navigation>
+    <fragment
+        android:id="@+id/addServiceFragment"
+        android:name="com.taureanx.phoneservicelogs.subfragments.AddServiceFragment"
+        android:label="AddServiceFragment" />
 </navigation>

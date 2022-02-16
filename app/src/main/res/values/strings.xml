@@ -21,4 +21,8 @@
     <string name="collected_date_label">အပ်သည့်ရက်စွဲ -</string>
     <string name="taken_date_label">ရွေးသည့်ရက်စွဲ -</string>
     <string name="menu_save">Save</string>
+    <string name="note">မှတ်ချက်</string>
+    <string name="status">Status</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 </resources>
