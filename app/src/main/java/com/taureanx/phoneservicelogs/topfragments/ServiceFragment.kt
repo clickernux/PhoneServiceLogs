@@ -11,7 +11,7 @@ import com.taureanx.phoneservicelogs.ServiceActivity
 import com.taureanx.phoneservicelogs.adapter.OnServiceClickListener
 import com.taureanx.phoneservicelogs.adapter.ServiceRecyclerAdapter
 import com.taureanx.phoneservicelogs.databinding.FragmentServiceBinding
-import com.taureanx.phoneservicelogs.model.ServiceData
+import com.taureanx.phoneservicelogs.dialog_fragments.ServiceInfoDialog
 
 const val NEW_SERVICE = -1L
 
@@ -29,15 +29,10 @@ class ServiceFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         val recyclerAdapter = ServiceRecyclerAdapter(OnServiceClickListener {
-            startEditService(it)
+            showServiceInfoDialog(it.id!!)
         })
         binding.serviceDataList.adapter = recyclerAdapter
         return binding.root
-    }
-
-    private fun startEditService(data: ServiceData) {
-        val serviceActivity = ServiceActivity.newIntent(this.requireContext(), data.id!!)
-        startActivity(serviceActivity)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,6 +41,12 @@ class ServiceFragment : Fragment() {
             val intent = ServiceActivity.newIntent(this.requireContext(), NEW_SERVICE)
             startActivity(intent)
         }
+    }
+
+    private fun showServiceInfoDialog(itemId: Long) {
+        val fragmentManager = this.parentFragmentManager
+        val infoDialogFragment = ServiceInfoDialog.newInstance(itemId)
+        infoDialogFragment.show(fragmentManager, "ServiceInfo")
     }
 
     override fun onDestroyView() {

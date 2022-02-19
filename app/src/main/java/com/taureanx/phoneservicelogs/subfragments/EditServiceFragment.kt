@@ -2,12 +2,13 @@ package com.taureanx.phoneservicelogs.subfragments
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.google.android.material.snackbar.Snackbar
 import com.taureanx.phoneservicelogs.R
 import com.taureanx.phoneservicelogs.databinding.FragmentEditServiceBinding
 import com.taureanx.phoneservicelogs.subfragments.viewmodels.AddServiceViewModel
+import com.taureanx.phoneservicelogs.util.DataSource
 import logcat.logcat
 
 // TODO: Rename parameter arguments, choose names that match
@@ -46,9 +47,28 @@ class EditServiceFragment : Fragment() {
             viewModel.getServiceData(it)
         }
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         setHasOptionsMenu(true)
+
+        val brandListAdapter = ArrayAdapter(requireContext(), R.layout.phone_brand_list_item, DataSource.phoneBrand)
+        binding.phoneBrandList.setAdapter(brandListAdapter)
+        viewModel.serviceData.observe(viewLifecycleOwner){ serviceData ->
+            serviceData?.let {
+                binding.phoneBrandList.setText(it.phBrand, false)
+            }
+        }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.phoneBrandList.setOnItemClickListener { adapterView, _, i, _ ->
+            val selectedBrand = adapterView.getItemAtPosition(i).toString()
+            logcat {
+                "Selected Brand: $selectedBrand"
+            }
+            viewModel.onBrandChanged(selectedBrand)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -42,4 +42,8 @@ class AddServiceViewModel: ViewModel() {
             serviceRepository.updateServiceData(serviceData.value!!)
         }
     }
+
+    fun onBrandChanged(newBrand: String){
+        _serviceData.value = serviceData.value?.copy(phBrand = newBrand)
+    }
 }

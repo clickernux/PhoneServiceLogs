@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.taureanx.phoneservicelogs.R
 import com.taureanx.phoneservicelogs.adapter.ServiceRecyclerAdapter
 import com.taureanx.phoneservicelogs.model.ServiceData
@@ -31,7 +32,6 @@ fun showOrHideNoData(textView: TextView, data: List<ServiceData>?){
     }
 }
 
-
 @BindingAdapter("setDataToRecyclerView")
 fun setUpRecyclerView(recyclerView: RecyclerView, data: List<ServiceData>?){
     val adapter = recyclerView.adapter as ServiceRecyclerAdapter
@@ -51,4 +51,10 @@ fun showStatusOfServiceDevice(imageView: ImageView, data: ServiceData){
     }else{
         imageView.visibility = View.GONE
     }
+}
+
+
+@BindingAdapter("selectedBrand")
+fun managePhoneBrand(autoCompleteTextView: MaterialAutoCompleteTextView, selectedBrand: String){
+    autoCompleteTextView.setText(selectedBrand, false)
 }

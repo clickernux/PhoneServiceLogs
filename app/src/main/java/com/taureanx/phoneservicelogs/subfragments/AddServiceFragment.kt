@@ -10,6 +10,7 @@ import com.taureanx.phoneservicelogs.R
 import com.taureanx.phoneservicelogs.databinding.FragmentAddServiceBinding
 import com.taureanx.phoneservicelogs.model.ServiceData
 import com.taureanx.phoneservicelogs.subfragments.viewmodels.AddServiceViewModel
+import com.taureanx.phoneservicelogs.util.DataSource
 import com.taureanx.phoneservicelogs.util.PhoneBrand
 import com.taureanx.phoneservicelogs.util.getFormattedDate
 import logcat.logcat
@@ -22,17 +23,6 @@ class AddServiceFragment : Fragment() {
         ViewModelProvider(this).get(AddServiceViewModel::class.java)
     }
 
-    private val phoneBrand = listOf(
-        PhoneBrand.XIAOMI.toString(),
-        PhoneBrand.VIVO.toString(),
-        PhoneBrand.OPPO.toString(),
-        PhoneBrand.HONOR.toString(),
-        PhoneBrand.HUAWEI.toString(),
-        PhoneBrand.REALME.toString(),
-        PhoneBrand.TECNO.toString(),
-        PhoneBrand.OTHER.toString()
-    )
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +30,7 @@ class AddServiceFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentAddServiceBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-        val adapter = ArrayAdapter(requireContext(), R.layout.phone_brand_list_item, phoneBrand)
+        val adapter = ArrayAdapter(requireContext(), R.layout.phone_brand_list_item, DataSource.phoneBrand)
         binding.phoneBrandList.setAdapter(adapter)
         return binding.root
     }
